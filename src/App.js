@@ -1,7 +1,7 @@
- react rimport React, { Component } from 'react';
+import React, { Component } from 'react';
 //import React, { useState } from 'react';
 import './App.css';
-//import Radium, { StyleRoot } from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 /*
@@ -50,18 +50,6 @@ class App extends Component {
                         click={() => this.deletePersonHandler(index)}/>
             })
           }
-                {/* <Person 
-                      name={this.state.persons[0].name} 
-                      age={this.state.persons[0].age}
-                      click={this.switchNameHandler.bind(this,"Tan")}/>
-                <Person 
-                      name={this.state.persons[1].name} 
-                      age={this.state.persons[1].age}
-                      changed={this.changeHandler}/>
-                <Person 
-                      name={this.state.persons[2].name} 
-                      age={this.state.persons[2].age}
-                      click={() => this.switchNameHandler("Tan1")}/> */}
           </div> 
       );
       style.backgroundColor='red';
@@ -72,7 +60,6 @@ class App extends Component {
       };
       
     }
-    //let classes = ['red','bold'].join(' ');
     let classes = [];
 
     if (this .state.persons.length <= 2) {
@@ -83,7 +70,7 @@ class App extends Component {
       classes.push('bold'); //classes = ['red'];
     }
     return (
-      // <StyleRoot>
+      <StyleRoot>
         <div className="App">
           <h>Hi, I'm a React App</h>
           <p className={classes.join(' ')}>This is really working</p>
@@ -93,9 +80,8 @@ class App extends Component {
           {personsVar}
           <p> No of clicks : {this.state.noOfClicks}</p>
         </div>
-      //</StyleRoot>
+      </StyleRoot>
     );
-    //return React.createElement('div',null,React.createElement('h1',{className: 'App'},'Iam React app!!!'));
   }
 
   togglePersonHandler = () => {
@@ -158,78 +144,4 @@ class App extends Component {
   }
 }
 
-  
-
-
-
-
-// /*
-//  * Hooks Way of Doing things
-//  *
-// */
-//   const app = (props) => {
-//     const [ oldPersonsState, setPersonsState ] = useState ({
-//       persons: [
-//         {name:"Taneesh", age: 9},
-//         {name:"Praveen", age: 43},
-//         {name:"Mayuri", age: 36}
-//       ]
-//     });
-
-//     const [ oldNoOfClicks, incrementNoOfClicks] = useState ({
-//       noOfClicks: 0
-//     })
-
-
-//     const switchNameHandler = () => {
-//       setPersonsState({
-//         persons: [
-//           {name:"Taneesh", age: 10},
-//           {name:"Praveen", age: 44},
-//           {name:"Lakshmi", age: 37}
-//         ]
-        
-//       });
-
-//       //Old - Not used
-//       // incrementNoOfClicks( {
-//       //   noOfClicks: oldNoOfClicks.noOfClicks +1
-//       // });
-
-//     };
-
-//     const incrementCountHandler = () => {
-//       incrementNoOfClicks( {
-//         noOfClicks: oldNoOfClicks.noOfClicks +1
-//       });      
-//     };
-
-//     return (
-//       <div className="App">
-//          <h>Hi, I'm a React App</h>
-//          <p>This is really working</p>
-//          <button onClick={incrementCountHandler}>Count Once More</button>
-//          <Person 
-//             name={oldPersonsState.persons[1].name} 
-//             age={oldPersonsState.persons[1].age}
-//             click={switchNameHandler}/>
-//          <Person 
-//             name={oldPersonsState.persons[2].name} 
-//             age={oldPersonsState.persons[2].age}/>
-//          <Person 
-//             name={oldPersonsState.persons[0].name} 
-//             age={oldPersonsState.persons[0].age}/>
-//          <p> No of clicks : {oldNoOfClicks.noOfClicks}</p>
-//       </div>
-//     );
-    
-
-      
-
-
-//   }
-
-
-
-
-export default App;
+export default Radium(App);
