@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import React, { useState } from 'react';
-import './App.css';
+import classes from './App.css';
 //import styled from 'styled-components';
 import Person from './Person/Person';
 
@@ -23,6 +23,7 @@ class App extends Component {
   render() {
 
     let personsVar = null;
+    let btnClasses = [classes.Button];
 
     if (this.state.showPersons) {
       personsVar = (
@@ -39,6 +40,7 @@ class App extends Component {
           }
           </div> 
       );
+      btnClasses.push(classes.Red);
       // style.backgroundColor='red';
       // style[':hover'] = {
       //   backgroundColor: 'salmon',
@@ -47,22 +49,22 @@ class App extends Component {
       // };
       
     }
-    let classes = [];
+    let assignedClasses = [];
 
-    if (this .state.persons.length <= 2) {
-      classes.push('red'); //classes = ['red'];
+    if (this.state.persons.length <= 2) {
+      assignedClasses.push(classes.red); //classes = ['red'];
     }
 
-    if (this .state.persons.length <= 1) {
-      classes.push('bold'); //classes = ['red'];
+    if (this.state.persons.length <= 1) {
+      assignedClasses.push(classes.bold); //classes = ['red'];
     }
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h>Hi, I'm a React App</h>
-          <p className={classes.join(' ')}>This is really working</p>
-          <button key="button1" className="button" onClick={this.incrementCountHandler}>Increment</button>
-          <button key="button2" className="button" onClick={this.changeCountHandler.bind(this, 2)}>Count 2</button>
-          <button key="button3" className="button" onClick={this.togglePersonHandler}>Show</button>
+          <p className={assignedClasses.join(' ')}>This is really working</p>
+          <button key="button1" className={btnClasses.join(' ')} onClick={this.incrementCountHandler}>Increment</button>
+          <button key="button2" className={btnClasses.join(' ')} onClick={this.changeCountHandler.bind(this, 2)}>Count 2</button>
+          <button key="button3" className={btnClasses.join(' ')} onClick={this.togglePersonHandler}>Show</button>
           {personsVar}
           <p> No of clicks : {this.state.noOfClicks}</p>
         </div>
