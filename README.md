@@ -1,2 +1,2 @@
 # react-training
-React Training Repository
+This contains a project used for REACT Training
