@@ -4,6 +4,8 @@ import classes from './App.css';
 //import styled from 'styled-components';
 import Person from './Person/Person';
 
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 /*
  * Class Way of Doing things
  *
@@ -30,12 +32,14 @@ class App extends Component {
         <div key>
           {
             this.state.persons.map((person, index) => {
-              return <Person 
+              return <ErrorBoundary key={person.id}>
+                      <Person
                         name={person.name}
                         age={person.age}
-                        key={person.id}
+                        
                         changed={(event) => this.changeHandler(event, person.id)}
                         click={() => this.deletePersonHandler(index)}/>
+                      </ErrorBoundary>
             })
           }
           </div> 
@@ -106,7 +110,7 @@ class App extends Component {
   }
 
   changeHandler = (event, id ) => {
-    const personIndex = this. state.persons.findIndex( p=>{
+    const personIndex = this.state.persons.findIndex( p=>{
       return p.id === id;
     });
     // alert('Index:'.concat(personIndex));
@@ -115,6 +119,7 @@ class App extends Component {
     };
 
     personToBeUpdated.name = event.target.value;
+
 
     const updatedPersons = [...this.state.persons];
     updatedPersons[personIndex] = personToBeUpdated;
