@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 //import React, { useState } from 'react';
 import './App.css';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 import Person from './Person/Person';
 
-const StyledButton = styled.button`
-      background-color: ${props => props.alt ? 'red' : 'green'};
-      color: white;
-      font: inherit;
-      border: px solid black;
-      padding: 8px;
-      cursor: pointer;
-      &:hover {
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-        color: black;
-        border: 1px solid blue;
-      }
-`;
 /*
  * Class Way of Doing things
  *
@@ -34,19 +21,6 @@ class App extends Component {
   };
 
   render() {
-    // const style = {
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   font: 'inherit',
-    //   border: '1px solid black',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   ':hover': {
-    //     backgroundColor: 'lightgreen',
-    //     color: 'black',
-    //     border: '1px solid blue'
-    //   }
-    // };
 
     let personsVar = null;
 
@@ -86,9 +60,9 @@ class App extends Component {
         <div className="App">
           <h>Hi, I'm a React App</h>
           <p className={classes.join(' ')}>This is really working</p>
-          <StyledButton key='button1' alt={this.state.showPersons} onClick={this.incrementCountHandler}>Increment</StyledButton>
-          <StyledButton key='button2' alt={this.state.showPersons} onClick={this.changeCountHandler.bind(this, 2)}>Count 2</StyledButton>
-          <StyledButton key='button3' alt={this.state.showPersons} onClick={this.togglePersonHandler}>Show</StyledButton>
+          <button key="button1" className="button" onClick={this.incrementCountHandler}>Increment</button>
+          <button key="button2" className="button" onClick={this.changeCountHandler.bind(this, 2)}>Count 2</button>
+          <button key="button3" className="button" onClick={this.togglePersonHandler}>Show</button>
           {personsVar}
           <p> No of clicks : {this.state.noOfClicks}</p>
         </div>
@@ -102,11 +76,6 @@ class App extends Component {
   }
   changeCountHandler = (newCount) => {
     this.setState ({
-      // persons: [
-      //   {name: "Taneesh", age: 9},
-      //   {name: "Praveen", age: 43},
-      //   {name: "Mayuri", age: 36}
-      // ],
       noOfClicks: newCount
     });
 
