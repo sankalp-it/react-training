@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 //import React, { useState } from 'react';
 import classes from './App.css';
 //import styled from 'styled-components';
-import Person from './Person/Person';
+import Person from '../Components/Persons/Person/Person';
 
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 /*
  * Class Way of Doing things
@@ -29,7 +29,7 @@ class App extends Component {
 
     if (this.state.showPersons) {
       personsVar = (
-        <div key>
+        <div>
           {
             this.state.persons.map((person, index) => {
               return <ErrorBoundary key={person.id}>
